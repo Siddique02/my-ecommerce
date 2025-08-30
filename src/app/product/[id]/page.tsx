@@ -45,8 +45,8 @@ const products = [
 
 export default function ProductDetail() {
   const params = useParams();
-  const id: any = params.id;
-  const product = products.find(p => p.id === parseInt(id));
+  const id = typeof params.id === 'string' ? params.id : undefined;
+  const product = id ? products.find(p => p.id === parseInt(id)) : undefined;
   const { addToCart } = useCart();
 
   if (!product) {
